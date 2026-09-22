@@ -25,12 +25,13 @@
       <div>
         <p class="eyebrow">Harvard Library · decision brief · September 2026</p>
         <h1 id="page-title">Find a study space that fits the work.</h1>
-        <p class="lede">Compare 30 spaces using the features Harvard Library publishes—then see where missing information makes planning harder for students.</p>
+        <p class="lede">Explore all 103 spaces in Harvard Library’s public space finder—capacity, noise, room type, reservations, coordinates, and 19 amenity fields in one decision tool.</p>
       </div>
       <aside class="brief-card" aria-label="Project purpose">
         <p class="brief-label">The decision</p>
         <p><strong>Students:</strong> Where should I work for this task?</p>
         <p><strong>Library teams:</strong> Which information and amenities deserve attention?</p>
+        <p class="data-stamp" id="dataset-stamp">103 records · 13 libraries · 2,098 listed seats</p>
         <p class="mini">Public, non-personal facility data only.</p>
       </aside>
     </section>
@@ -48,12 +49,23 @@
           <button class="goal" type="button" data-goal="comfort" aria-pressed="false"><span>04</span> Comfort break</button>
         </div>
         <div class="quick-filters">
+          <label>Search name, description, or amenity
+            <input id="space-search" type="search" placeholder="Try: whiteboard, carrel, media…">
+          </label>
           <label>Library
-            <select id="library-filter"><option value="all">All six libraries</option></select>
+            <select id="library-filter"><option value="all">All libraries</option></select>
           </label>
           <label>Space type
             <select id="type-filter"><option value="all">All space types</option></select>
           </label>
+          <div class="filter-pair">
+            <label>Noise level
+              <select id="noise-filter"><option value="all">Any noise level</option><option>Silent</option><option>Whispers</option><option>Chatter</option></select>
+            </label>
+            <label>Minimum capacity
+              <select id="seats-filter"><option value="0">Any capacity</option><option value="1">1+ seats</option><option value="4">4+ seats</option><option value="6">6+ seats</option><option value="10">10+ seats</option><option value="20">20+ seats</option><option value="50">50+ seats</option></select>
+            </label>
+          </div>
           <label class="check"><input id="accessible-filter" type="checkbox"> Accessibility listed</label>
           <label class="check"><input id="reservable-filter" type="checkbox"> Reservability listed</label>
           <label class="check"><input id="food-filter" type="checkbox"> Food or café listed</label>
@@ -65,17 +77,17 @@
         <div class="result-heading">
           <div>
             <p class="section-kicker">Best published fit</p>
-            <h3 id="best-name">Fine Arts Library Study Carrels</h3>
-            <p id="best-meta" class="meta">Fine Arts Library · Library Stacks · Study Carrel</p>
+            <h3 id="best-name">Loading the full directory…</h3>
+            <p id="best-meta" class="meta">103 official records</p>
           </div>
           <span class="score" id="best-score">80<span>/100</span></span>
         </div>
-        <p id="best-reason" class="best-reason">Private desks, a quiet-study designation, charging, and reservability make this the strongest published fit for concentrated work.</p>
+        <p id="best-reason" class="best-reason">The matchmaker is ranking all official records using the selected goal and filters.</p>
         <div id="best-features" class="feature-row"></div>
         <p class="note">Fit scores are transparent decision aids—not student satisfaction ratings. A zero means “not listed,” not “confirmed absent.”</p>
 
         <div class="runner-section">
-          <div class="subhead"><h4>Next best options</h4><span id="match-count">30 matches</span></div>
+          <div class="subhead"><h4>Next best options</h4><span id="match-count">103 matches</span></div>
           <div id="runner-ups" class="runner-grid"></div>
         </div>
         <div id="empty-state" class="empty-state" hidden>
@@ -91,10 +103,10 @@
         <p>Indicators recalculate with every filter. Units are spaces and percentage of spaces.</p>
       </div>
       <div class="kpi-grid">
-        <article class="kpi"><span id="kpi-spaces">30</span><p>spaces in view</p></article>
-        <article class="kpi"><span id="kpi-libraries">6</span><p>libraries represented</p></article>
-        <article class="kpi"><span id="kpi-access">43%</span><p>accessibility listed</p></article>
-        <article class="kpi"><span id="kpi-density">3.4</span><p>listed features per space</p></article>
+        <article class="kpi"><span id="kpi-spaces">103</span><p>spaces in view</p></article>
+        <article class="kpi"><span id="kpi-libraries">13</span><p>libraries represented</p></article>
+        <article class="kpi"><span id="kpi-seats">2,098</span><p>listed seats in view</p></article>
+        <article class="kpi"><span id="kpi-access">47%</span><p>accessibility listed</p></article>
       </div>
     </section>
 
@@ -125,7 +137,7 @@
           <div class="chart-title"><div><p class="chart-number">D</p><h3>Library comparison</h3></div><p>Counts are “listed in the source,” not audited inventory</p></div>
           <div class="table-scroll">
             <table>
-              <thead><tr><th>Library</th><th>Spaces</th><th>Access</th><th>Quiet</th><th>Reservable</th><th>Charging</th><th>Food / café</th></tr></thead>
+              <thead><tr><th>Library</th><th>Spaces</th><th>Seats</th><th>Access</th><th>Silent / whispers</th><th>Reservable</th><th>Charging</th><th>Food / café</th></tr></thead>
               <tbody id="library-table"></tbody>
             </table>
           </div>
@@ -136,20 +148,20 @@
     <section class="findings section-pad" id="findings" aria-labelledby="findings-title">
       <div class="section-heading inverse">
         <div><p class="section-kicker">04 · Decision brief</p><h2 id="findings-title">Three findings that matter</h2></div>
-        <p>These conclusions apply to the 30-space sample, not every Harvard study location.</p>
+        <p>These conclusions apply to all 103 records returned by the official Harvard Library space finder on 21 September 2026.</p>
       </div>
       <div class="finding-grid">
-        <article><span>01</span><h3>Good spaces specialize.</h3><p>Quiet carrels and reading rooms lead for focus; rooms with displays and whiteboards rise for group or presentation work. One universal ranking would conceal that trade-off.</p></article>
-        <article><span>02</span><h3>Published metadata is uneven.</h3><p>Only some space cards list accessibility, charging, quiet designation, or reservability. Students cannot tell whether a missing label means “unavailable” or simply “undocumented.”</p></article>
-        <article><span>03</span><h3>Late access is concentrated.</h3><p>Cabot and Lamont are described as 24-hour libraries, concentrating late-night choice in two buildings. Individual rooms may still have different access rules.</p></article>
+        <article><span>01</span><h3>Capacity is concentrated.</h3><p>Lamont and Widener account for 992 of 2,098 listed seats (47%), even though they contain only 27 of 103 space records. Large open rooms shape system capacity.</p></article>
+        <article><span>02</span><h3>Noise and task pull apart.</h3><p>Only 45 spaces are coded Silent or Whispers; 58 are coded Chatter. A single “best library” ranking would hide the difference between focused work and collaboration.</p></article>
+        <article><span>03</span><h3>Equipment is not universal.</h3><p>45 spaces are reservable, 32 list a display, and 27 list a whiteboard. Those gaps matter most for group and presentation work.</p></article>
       </div>
 
       <div class="recommendations">
         <div><p class="section-kicker">Recommended next moves</p><h2>Make the information more decision-ready.</h2></div>
         <ol>
-          <li><strong>Standardize every space card.</strong><span>Require the same fields for noise, power, accessibility, reservation, food, and after-hours access—and show “unknown” explicitly.</span></li>
-          <li><strong>Pilot live availability where demand is longest.</strong><span>Start with high-use, 24-hour Cabot and Lamont areas; publish room status or periodic seat-count estimates without collecting identities.</span></li>
-          <li><strong>Validate priorities with a short anonymous intercept survey.</strong><span>Ask students to rank features and record broad time blocks, avoiding names, contact details, or precise personal histories.</span></li>
+          <li><strong>Protect quiet capacity while improving wayfinding.</strong><span>Label Silent and Whispers zones consistently at the entrance and online; monitor whether the 45 lower-noise records match student expectations.</span></li>
+          <li><strong>Target collaboration upgrades.</strong><span>Prioritize rooms that are already reservable but lack a listed display or whiteboard, then verify the physical inventory before purchasing.</span></li>
+          <li><strong>Add anonymous demand evidence.</strong><span>Collect periodic occupied-seat counts by broad time block and a short feature-priority survey—without names, contact details, or device tracking.</span></li>
         </ol>
       </div>
     </section>
@@ -161,11 +173,11 @@
       </div>
       <div class="table-scroll records-wrap">
         <table>
-          <thead><tr><th>Space</th><th>Library</th><th>Type</th><th>Level</th><th>Quiet</th><th>Accessible</th><th>Reservable</th><th>Charging</th></tr></thead>
+          <thead><tr><th>Space</th><th>Library</th><th>Type</th><th>Seats</th><th>Noise</th><th>Accessible</th><th>Reservable</th><th>Charging</th><th>Amenities</th></tr></thead>
           <tbody id="records-table"></tbody>
         </table>
       </div>
-      <p class="table-note" id="records-note">Showing all 30 records.</p>
+      <p class="table-note" id="records-note">Showing all 103 official records.</p>
     </section>
 
     <section class="materials section-pad" id="materials" aria-labelledby="materials-title">
@@ -174,7 +186,7 @@
         <p>Open each item as a separate page or download the analysis-ready dataset.</p>
       </div>
       <div class="material-grid">
-        <a href="harvard-study-spaces.csv" download><span>CSV</span><h3>Collected dataset</h3><p>30 rows, 18 variables, plain-language field names.</p><b>Download ↘</b></a>
+        <a href="harvard-study-spaces.csv" download><span>CSV</span><h3>Collected dataset</h3><p>103 rows, 43 variables, including 19 amenity indicators.</p><b>Download ↘</b></a>
         <a href="methods.html"><span>01</span><h3>Data &amp; methodology</h3><p>Source, sample, units, scoring, definitions, and limitations.</p><b>Read note →</b></a>
         <a href="presentation.html"><span>05:00</span><h3>Presentation</h3><p>Six-slide walkthrough with a timed speaker script.</p><b>Present →</b></a>
         <a href="reflection.html"><span>02</span><h3>Reflection</h3><p>What the evidence supports—and what it cannot prove.</p><b>Read reflection →</b></a>
@@ -184,19 +196,18 @@
     <section class="sources section-pad" aria-labelledby="sources-title">
       <div class="section-heading"><div><p class="section-kicker">Sources</p><h2 id="sources-title">Official information, checked 21 Sep 2026</h2></div></div>
       <div class="source-list">
-        <a href="https://library.harvard.edu/spaces" target="_blank" rel="noreferrer"><span>Primary dataset</span> Harvard Library · Find a Space ↗</a>
-        <a href="https://library.harvard.edu/libraries/cabot" target="_blank" rel="noreferrer"><span>Access &amp; context</span> Cabot Science Library ↗</a>
-        <a href="https://library.harvard.edu/libraries/lamont" target="_blank" rel="noreferrer"><span>Access &amp; context</span> Lamont Library ↗</a>
-        <a href="https://library.harvard.edu/libraries/widener" target="_blank" rel="noreferrer"><span>Access &amp; context</span> Widener Library ↗</a>
-        <a href="https://library.harvard.edu/libraries/yenching" target="_blank" rel="noreferrer"><span>Access &amp; context</span> Harvard-Yenching Library ↗</a>
-        <a href="https://library.harvard.edu/libraries/loeb-music" target="_blank" rel="noreferrer"><span>Access &amp; context</span> Loeb Music Library ↗</a>
-        <a href="https://library.harvard.edu/libraries/fine-arts" target="_blank" rel="noreferrer"><span>Access &amp; context</span> Fine Arts Library ↗</a>
+        <a href="https://library.harvard.edu/spaces" target="_blank" rel="noreferrer"><span>Primary directory</span> Harvard Library · Find a Space ↗</a>
+        <a href="https://library.harvard.edu/api/v1/rooms?_format=json" target="_blank" rel="noreferrer"><span>Room records</span> Official rooms API snapshot ↗</a>
+        <a href="https://library.harvard.edu/api/v1/library/rooms?_format=json" target="_blank" rel="noreferrer"><span>Library metadata</span> Official library API snapshot ↗</a>
+        <a href="https://library.harvard.edu/api/v1/taxonomy/amenities?_format=json" target="_blank" rel="noreferrer"><span>Definitions</span> Official amenities taxonomy ↗</a>
+        <a href="https://library.harvard.edu/api/v1/taxonomy/room_types?_format=json" target="_blank" rel="noreferrer"><span>Definitions</span> Official room-type taxonomy ↗</a>
         <a href="https://library.harvard.edu/accessibility" target="_blank" rel="noreferrer"><span>Definition context</span> Accessibility at Harvard Library ↗</a>
       </div>
     </section>
   </main>
 
   <footer><p>Student Data-to-Site Challenge · Problem Set 01</p><p>Facility information changes. Confirm current hours, eligibility, and room status with Harvard Library before visiting.</p></footer>
+  <script src="data.js" defer></script>
   <script src="app.js" defer></script>
 </body>
 </html>
