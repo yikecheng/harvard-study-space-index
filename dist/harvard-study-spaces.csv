@@ -1,0 +1,31 @@
+space_id,name,library,level,space_type,quiet_designated,accessible_listed,reservable_listed,charging_listed,food_or_cafe_listed,private_desks,couches_or_armchairs,display,whiteboard,tech_loan,library_described_as_24h,source_url,accessed_date
+cab-discovery,Cabot L102 — Discovery Bar,Cabot Science Library,Main Level,Meeting & Presentation,0,1,0,0,0,0,0,1,0,1,1,https://library.harvard.edu/spaces,2026-09-21
+cab-l202,Cabot L202 — Group Study Room,Cabot Science Library,Second Floor,Group Study Room,0,0,0,0,1,0,0,0,0,1,1,https://library.harvard.edu/spaces,2026-09-21
+cab-chat-c,Cabot Chat Booth C,Cabot Science Library,Lower Level,Independent Study Room,1,1,1,0,1,1,0,0,0,1,1,https://library.harvard.edu/spaces,2026-09-21
+cab-ll05,Cabot LL05 — Group Study Room,Cabot Science Library,Lower Level,Group Study Room,0,0,1,0,1,0,0,1,1,0,1,https://library.harvard.edu/spaces,2026-09-21
+cab-main,Cabot Main Level,Cabot Science Library,Main Level,Open Space,0,0,0,0,0,1,1,0,0,1,1,https://library.harvard.edu/spaces,2026-09-21
+cab-second,Cabot Second Floor,Cabot Science Library,Second Floor,Open Space,1,0,0,0,1,0,1,0,0,1,1,https://library.harvard.edu/libraries/cabot,2026-09-21
+lam-220,Lamont 220 — Small Group Study Room,Lamont Library,Second Floor,Group Study Room,0,0,0,0,1,0,0,1,1,1,1,https://library.harvard.edu/spaces,2026-09-21
+lam-310,Lamont 310 — Media Lab Annex,Lamont Library,Third Floor,Media Lab / Studio,0,0,0,0,1,1,0,0,0,1,1,https://library.harvard.edu/spaces,2026-09-21
+lam-b30,Lamont B30 — Collaborative Learning Space,Lamont Library,Lower Level,Meeting & Presentation,0,0,0,0,1,0,1,1,1,0,1,https://library.harvard.edu/spaces,2026-09-21
+lam-donatelli,Lamont Donatelli Reading Room,Lamont Library,Third Floor,Open Space,1,0,0,1,1,1,1,0,0,1,1,https://library.harvard.edu/libraries/lamont,2026-09-21
+lam-cafe,Lamont Library Café,Lamont Library,Main Level,Open Space,0,0,0,1,1,0,1,0,0,1,1,https://library.harvard.edu/spaces,2026-09-21
+lam-level-a,Lamont Level A,Lamont Library,Level A,Open Space,0,0,0,0,1,1,0,0,0,1,1,https://library.harvard.edu/spaces,2026-09-21
+wid-150,Widener 150 — Widener Reading Room,Widener Library,Main Level,Open Space,0,1,0,1,0,0,1,0,0,0,0,https://library.harvard.edu/spaces,2026-09-21
+wid-160,Widener 160 — Phillips Reading Room,Widener Library,Main Level,Open Space,1,1,0,1,0,0,0,0,0,0,0,https://library.harvard.edu/libraries/widener,2026-09-21
+wid-210,Widener 210 — Loker Reading Room,Widener Library,Second Floor,Open Space,1,1,0,1,0,0,1,0,0,0,0,https://library.harvard.edu/libraries/widener,2026-09-21
+wid-240,Widener 240 — Collaborative Learning Space,Widener Library,Second Floor,Open Space,0,0,0,1,0,0,0,1,1,0,0,https://library.harvard.edu/spaces,2026-09-21
+wid-carrels,Widener & Pusey Study Carrels,Widener Library,Library Stacks,Study Carrel,1,0,1,0,0,1,0,0,0,0,0,https://library.harvard.edu/spaces,2026-09-21
+wid-cafe,Widener Café,Widener Library,Ground Floor,Open Space,0,0,0,1,1,0,0,0,0,0,0,https://library.harvard.edu/spaces,2026-09-21
+loe-aldrich,Loeb Aldrich Reading Room,Loeb Music Library,Main Level,Open Space,0,1,0,1,0,0,1,0,0,0,0,https://library.harvard.edu/spaces,2026-09-21
+loe-listen1,Loeb Group Listening Room 1,Loeb Music Library,Main Level,Group Study Room,0,1,0,0,0,1,0,1,0,0,0,https://library.harvard.edu/spaces,2026-09-21
+loe-group,Loeb Group Study Room,Loeb Music Library,Main Level,Group Study Room,0,1,1,0,0,0,0,0,0,0,0,https://library.harvard.edu/spaces,2026-09-21
+loe-spalding,Loeb Spalding Room,Loeb Music Library,Second Floor,Open Space,0,1,0,0,0,1,1,0,0,0,0,https://library.harvard.edu/spaces,2026-09-21
+fal-reading,Fine Arts Library Reading Room,Fine Arts Library,Main Level,Open Space,0,1,0,1,0,0,1,0,0,0,0,https://library.harvard.edu/spaces,2026-09-21
+fal-carrels,Fine Arts Library Study Carrels,Fine Arts Library,Library Stacks,Study Carrel,1,0,1,1,0,1,0,0,0,0,0,https://library.harvard.edu/spaces,2026-09-21
+yen-bib,Harvard-Yenching Bibliography Room,Harvard-Yenching Library,Main Level,Meeting & Presentation,0,1,1,1,0,0,1,1,0,0,0,https://library.harvard.edu/libraries/yenching,2026-09-21
+yen-chinn,Harvard-Yenching Chinn Ho Reading Room,Harvard-Yenching Library,Main Level,Open Space,0,1,0,1,0,0,1,1,0,0,0,https://library.harvard.edu/spaces,2026-09-21
+yen-group203,Harvard-Yenching Group Study Room 203,Harvard-Yenching Library,Second Floor,Group Study Room,0,0,1,1,0,0,0,1,0,0,0,https://library.harvard.edu/spaces,2026-09-21
+yen-media202,Harvard-Yenching Multimedia Room 202,Harvard-Yenching Library,Second Floor,Media Lab / Studio,0,0,1,0,0,0,0,1,0,1,0,https://library.harvard.edu/spaces,2026-09-21
+yen-reference,Harvard-Yenching Reference Area,Harvard-Yenching Library,Lower Level,Open Space,1,0,0,0,0,0,0,0,0,0,0,https://library.harvard.edu/spaces,2026-09-21
+yen-carrels,Harvard-Yenching Study Carrels,Harvard-Yenching Library,Library Stacks,Study Carrel,0,1,0,1,0,1,0,0,0,0,0,https://library.harvard.edu/spaces,2026-09-21

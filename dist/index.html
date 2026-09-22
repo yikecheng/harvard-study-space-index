@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>The Study Space Index | Harvard</title>
+  <meta name="description" content="A decision dashboard for comparing Harvard Library study spaces by task and published amenities.">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23A51C30'/%3E%3Cpath d='M14 17h36v6H14zm4 10h28v24H18z' fill='white'/%3E%3Cpath d='M24 33h16v4H24zm0 8h12v4H24z' fill='%23A51C30'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#top" aria-label="Study Space Index home"><span class="brand-mark">H</span><span>Study Space Index</span></a>
+    <button class="menu-button" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+    <nav id="site-nav" aria-label="Primary navigation">
+      <a href="#explore">Explore</a>
+      <a href="#evidence">Evidence</a>
+      <a href="#findings">Findings</a>
+      <a href="#materials">Materials</a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="intro" aria-labelledby="page-title">
+      <div>
+        <p class="eyebrow">Harvard Library · decision brief · September 2026</p>
+        <h1 id="page-title">Find a study space that fits the work.</h1>
+        <p class="lede">Compare 30 spaces using the features Harvard Library publishes—then see where missing information makes planning harder for students.</p>
+      </div>
+      <aside class="brief-card" aria-label="Project purpose">
+        <p class="brief-label">The decision</p>
+        <p><strong>Students:</strong> Where should I work for this task?</p>
+        <p><strong>Library teams:</strong> Which information and amenities deserve attention?</p>
+        <p class="mini">Public, non-personal facility data only.</p>
+      </aside>
+    </section>
+
+    <section class="workspace" id="explore" aria-labelledby="explore-title">
+      <div class="controls-panel">
+        <div>
+          <p class="section-kicker">01 · Matchmaker</p>
+          <h2 id="explore-title">What are you here to do?</h2>
+        </div>
+        <div class="goal-tabs" role="group" aria-label="Choose a study goal">
+          <button class="goal active" type="button" data-goal="focus" aria-pressed="true"><span>01</span> Deep focus</button>
+          <button class="goal" type="button" data-goal="group" aria-pressed="false"><span>02</span> Group work</button>
+          <button class="goal" type="button" data-goal="make" aria-pressed="false"><span>03</span> Make &amp; present</button>
+          <button class="goal" type="button" data-goal="comfort" aria-pressed="false"><span>04</span> Comfort break</button>
+        </div>
+        <div class="quick-filters">
+          <label>Library
+            <select id="library-filter"><option value="all">All six libraries</option></select>
+          </label>
+          <label>Space type
+            <select id="type-filter"><option value="all">All space types</option></select>
+          </label>
+          <label class="check"><input id="accessible-filter" type="checkbox"> Accessibility listed</label>
+          <label class="check"><input id="reservable-filter" type="checkbox"> Reservability listed</label>
+          <label class="check"><input id="food-filter" type="checkbox"> Food or café listed</label>
+          <button id="clear-filters" class="text-button" type="button">Clear filters</button>
+        </div>
+      </div>
+
+      <div class="results-panel" aria-live="polite">
+        <div class="result-heading">
+          <div>
+            <p class="section-kicker">Best published fit</p>
+            <h3 id="best-name">Fine Arts Library Study Carrels</h3>
+            <p id="best-meta" class="meta">Fine Arts Library · Library Stacks · Study Carrel</p>
+          </div>
+          <span class="score" id="best-score">80<span>/100</span></span>
+        </div>
+        <p id="best-reason" class="best-reason">Private desks, a quiet-study designation, charging, and reservability make this the strongest published fit for concentrated work.</p>
+        <div id="best-features" class="feature-row"></div>
+        <p class="note">Fit scores are transparent decision aids—not student satisfaction ratings. A zero means “not listed,” not “confirmed absent.”</p>
+
+        <div class="runner-section">
+          <div class="subhead"><h4>Next best options</h4><span id="match-count">30 matches</span></div>
+          <div id="runner-ups" class="runner-grid"></div>
+        </div>
+        <div id="empty-state" class="empty-state" hidden>
+          <strong>No spaces match every filter.</strong>
+          <p>Try clearing one requirement. Missing source metadata can hide a space that may still work.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="snapshot section-pad" aria-labelledby="snapshot-title">
+      <div class="section-heading">
+        <div><p class="section-kicker">02 · Snapshot</p><h2 id="snapshot-title">What the selected records show</h2></div>
+        <p>Indicators recalculate with every filter. Units are spaces and percentage of spaces.</p>
+      </div>
+      <div class="kpi-grid">
+        <article class="kpi"><span id="kpi-spaces">30</span><p>spaces in view</p></article>
+        <article class="kpi"><span id="kpi-libraries">6</span><p>libraries represented</p></article>
+        <article class="kpi"><span id="kpi-access">43%</span><p>accessibility listed</p></article>
+        <article class="kpi"><span id="kpi-density">3.4</span><p>listed features per space</p></article>
+      </div>
+    </section>
+
+    <section class="evidence section-pad" id="evidence" aria-labelledby="evidence-title">
+      <div class="section-heading">
+        <div><p class="section-kicker">03 · Evidence</p><h2 id="evidence-title">Coverage, trade-offs, and gaps</h2></div>
+        <p>The charts use the filtered records above. Hover or focus on plotted points for a space name and score.</p>
+      </div>
+
+      <div class="chart-grid">
+        <article class="chart-card chart-wide">
+          <div class="chart-title"><div><p class="chart-number">A</p><h3>Top fit scores</h3></div><p id="rank-caption">Deep-focus weighting · score out of 100</p></div>
+          <div id="rank-chart" class="rank-chart" role="img" aria-label="Ranked fit scores"></div>
+        </article>
+
+        <article class="chart-card">
+          <div class="chart-title"><div><p class="chart-number">B</p><h3>Feature coverage</h3></div><p>Share with feature listed</p></div>
+          <div id="coverage-chart" class="coverage-chart" role="img" aria-label="Feature coverage percentages"></div>
+        </article>
+
+        <article class="chart-card">
+          <div class="chart-title"><div><p class="chart-number">C</p><h3>Focus vs. group fit</h3></div><p>Each dot is one space</p></div>
+          <div id="scatter-chart" class="scatter-wrap" role="img" aria-label="Scatterplot comparing focus and group fit"></div>
+          <div class="legend"><span><i class="dot crimson"></i>Selected library</span><span><i class="dot teal"></i>Other libraries</span></div>
+        </article>
+
+        <article class="chart-card chart-wide">
+          <div class="chart-title"><div><p class="chart-number">D</p><h3>Library comparison</h3></div><p>Counts are “listed in the source,” not audited inventory</p></div>
+          <div class="table-scroll">
+            <table>
+              <thead><tr><th>Library</th><th>Spaces</th><th>Access</th><th>Quiet</th><th>Reservable</th><th>Charging</th><th>Food / café</th></tr></thead>
+              <tbody id="library-table"></tbody>
+            </table>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="findings section-pad" id="findings" aria-labelledby="findings-title">
+      <div class="section-heading inverse">
+        <div><p class="section-kicker">04 · Decision brief</p><h2 id="findings-title">Three findings that matter</h2></div>
+        <p>These conclusions apply to the 30-space sample, not every Harvard study location.</p>
+      </div>
+      <div class="finding-grid">
+        <article><span>01</span><h3>Good spaces specialize.</h3><p>Quiet carrels and reading rooms lead for focus; rooms with displays and whiteboards rise for group or presentation work. One universal ranking would conceal that trade-off.</p></article>
+        <article><span>02</span><h3>Published metadata is uneven.</h3><p>Only some space cards list accessibility, charging, quiet designation, or reservability. Students cannot tell whether a missing label means “unavailable” or simply “undocumented.”</p></article>
+        <article><span>03</span><h3>Late access is concentrated.</h3><p>Cabot and Lamont are described as 24-hour libraries, concentrating late-night choice in two buildings. Individual rooms may still have different access rules.</p></article>
+      </div>
+
+      <div class="recommendations">
+        <div><p class="section-kicker">Recommended next moves</p><h2>Make the information more decision-ready.</h2></div>
+        <ol>
+          <li><strong>Standardize every space card.</strong><span>Require the same fields for noise, power, accessibility, reservation, food, and after-hours access—and show “unknown” explicitly.</span></li>
+          <li><strong>Pilot live availability where demand is longest.</strong><span>Start with high-use, 24-hour Cabot and Lamont areas; publish room status or periodic seat-count estimates without collecting identities.</span></li>
+          <li><strong>Validate priorities with a short anonymous intercept survey.</strong><span>Ask students to rank features and record broad time blocks, avoiding names, contact details, or precise personal histories.</span></li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="data-table-section section-pad" aria-labelledby="records-title">
+      <div class="section-heading">
+        <div><p class="section-kicker">05 · Records</p><h2 id="records-title">Inspect the evidence</h2></div>
+        <a class="button secondary" href="harvard-study-spaces.csv" download>Download CSV</a>
+      </div>
+      <div class="table-scroll records-wrap">
+        <table>
+          <thead><tr><th>Space</th><th>Library</th><th>Type</th><th>Level</th><th>Quiet</th><th>Accessible</th><th>Reservable</th><th>Charging</th></tr></thead>
+          <tbody id="records-table"></tbody>
+        </table>
+      </div>
+      <p class="table-note" id="records-note">Showing all 30 records.</p>
+    </section>
+
+    <section class="materials section-pad" id="materials" aria-labelledby="materials-title">
+      <div class="section-heading">
+        <div><p class="section-kicker">06 · Submission pack</p><h2 id="materials-title">Everything behind the dashboard</h2></div>
+        <p>Open each item as a separate page or download the analysis-ready dataset.</p>
+      </div>
+      <div class="material-grid">
+        <a href="harvard-study-spaces.csv" download><span>CSV</span><h3>Collected dataset</h3><p>30 rows, 18 variables, plain-language field names.</p><b>Download ↘</b></a>
+        <a href="methods.html"><span>01</span><h3>Data &amp; methodology</h3><p>Source, sample, units, scoring, definitions, and limitations.</p><b>Read note →</b></a>
+        <a href="presentation.html"><span>05:00</span><h3>Presentation</h3><p>Six-slide walkthrough with a timed speaker script.</p><b>Present →</b></a>
+        <a href="reflection.html"><span>02</span><h3>Reflection</h3><p>What the evidence supports—and what it cannot prove.</p><b>Read reflection →</b></a>
+      </div>
+    </section>
+
+    <section class="sources section-pad" aria-labelledby="sources-title">
+      <div class="section-heading"><div><p class="section-kicker">Sources</p><h2 id="sources-title">Official information, checked 21 Sep 2026</h2></div></div>
+      <div class="source-list">
+        <a href="https://library.harvard.edu/spaces" target="_blank" rel="noreferrer"><span>Primary dataset</span> Harvard Library · Find a Space ↗</a>
+        <a href="https://library.harvard.edu/libraries/cabot" target="_blank" rel="noreferrer"><span>Access &amp; context</span> Cabot Science Library ↗</a>
+        <a href="https://library.harvard.edu/libraries/lamont" target="_blank" rel="noreferrer"><span>Access &amp; context</span> Lamont Library ↗</a>
+        <a href="https://library.harvard.edu/libraries/widener" target="_blank" rel="noreferrer"><span>Access &amp; context</span> Widener Library ↗</a>
+        <a href="https://library.harvard.edu/libraries/yenching" target="_blank" rel="noreferrer"><span>Access &amp; context</span> Harvard-Yenching Library ↗</a>
+        <a href="https://library.harvard.edu/libraries/loeb-music" target="_blank" rel="noreferrer"><span>Access &amp; context</span> Loeb Music Library ↗</a>
+        <a href="https://library.harvard.edu/libraries/fine-arts" target="_blank" rel="noreferrer"><span>Access &amp; context</span> Fine Arts Library ↗</a>
+        <a href="https://library.harvard.edu/accessibility" target="_blank" rel="noreferrer"><span>Definition context</span> Accessibility at Harvard Library ↗</a>
+      </div>
+    </section>
+  </main>
+
+  <footer><p>Student Data-to-Site Challenge · Problem Set 01</p><p>Facility information changes. Confirm current hours, eligibility, and room status with Harvard Library before visiting.</p></footer>
+  <script src="app.js" defer></script>
+</body>
+</html>
