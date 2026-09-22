@@ -3,210 +3,307 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>The Study Space Index | Harvard</title>
-  <meta name="description" content="A decision dashboard for comparing Harvard Library study spaces by task and published amenities.">
+  <title>The Study Space Index | Harvard Library Decision Tool</title>
+  <meta name="description" content="Compare 103 Harvard Library study spaces by task, capacity, noise, accessibility, reservability, and published amenities.">
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23A51C30'/%3E%3Cpath d='M14 17h36v6H14zm4 10h28v24H18z' fill='white'/%3E%3Cpath d='M24 33h16v4H24zm0 8h12v4H24z' fill='%23A51C30'/%3E%3C/svg%3E">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <header class="topbar">
-    <a class="brand" href="#top" aria-label="Study Space Index home"><span class="brand-mark">H</span><span>Study Space Index</span></a>
+    <a class="brand" href="#overview" aria-label="Study Space Index home"><span class="brand-mark">H</span><span>Study Space Index</span></a>
     <button class="menu-button" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
     <nav id="site-nav" aria-label="Primary navigation">
       <a href="#explore">Explore</a>
+      <a href="#compare">Compare</a>
       <a href="#evidence">Evidence</a>
-      <a href="#findings">Findings</a>
-      <a href="#materials">Materials</a>
+      <a href="#methods">Methods</a>
+      <a class="nav-download" href="harvard-study-spaces.csv" download>CSV ↘</a>
     </nav>
   </header>
 
-  <main id="top">
-    <section class="intro" aria-labelledby="page-title">
-      <div>
-        <p class="eyebrow">Harvard Library · decision brief · September 2026</p>
-        <h1 id="page-title">Find a study space that fits the work.</h1>
-        <p class="lede">Explore all 103 spaces in Harvard Library’s public space finder—capacity, noise, room type, reservations, coordinates, and 19 amenity fields in one decision tool.</p>
+  <main>
+    <section class="hero" id="overview" aria-labelledby="page-title">
+      <div class="hero-shade"></div>
+      <div class="hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow light">Harvard Library · facilities decision tool · September 2026</p>
+          <h1 id="page-title">Find the Harvard study space that fits the work.</h1>
+          <p class="lede light">Compare every record in Harvard Library’s public space finder. Choose a task, tune what matters, and see exactly why each space rises in the ranking.</p>
+          <div class="hero-goals" role="group" aria-label="Choose a quick study goal">
+            <button class="hero-goal active" type="button" data-goal="focus" aria-pressed="true">Deep focus</button>
+            <button class="hero-goal" type="button" data-goal="group" aria-pressed="false">Group work</button>
+            <button class="hero-goal" type="button" data-goal="make" aria-pressed="false">Make &amp; present</button>
+            <button class="hero-goal" type="button" data-goal="comfort" aria-pressed="false">Comfort break</button>
+          </div>
+          <p class="hero-audience"><strong>For students</strong> choosing where to work—and <strong>library teams</strong> deciding what information and facilities to improve.</p>
+        </div>
+
+        <aside class="hero-live" aria-live="polite" aria-label="Current top recommendation">
+          <div class="live-top"><span>Current top fit</span><strong id="hero-best-score">—</strong></div>
+          <p id="hero-goal-label">Deep-focus priorities</p>
+          <h2 id="hero-best-name">Loading official records…</h2>
+          <p id="hero-best-meta">103 study spaces · 13 libraries</p>
+          <a href="#explore">Open the full matchmaker ↓</a>
+        </aside>
       </div>
-      <aside class="brief-card" aria-label="Project purpose">
-        <p class="brief-label">The decision</p>
-        <p><strong>Students:</strong> Where should I work for this task?</p>
-        <p><strong>Library teams:</strong> Which information and amenities deserve attention?</p>
-        <p class="data-stamp" id="dataset-stamp">103 records · 13 libraries · 2,098 listed seats</p>
-        <p class="mini">Public, non-personal facility data only.</p>
-      </aside>
+
+      <div class="hero-stats" aria-label="Dataset summary">
+        <div><span>Spaces</span><strong>103</strong></div>
+        <div><span>Libraries represented</span><strong>13</strong></div>
+        <div><span>Listed seats</span><strong>2,098</strong></div>
+        <div><span>Dataset variables</span><strong>45</strong></div>
+      </div>
+      <p class="photo-credit">Photo: <a href="https://library.harvard.edu/spaces?room=386" target="_blank" rel="noreferrer">Cabot Science Library · Harvard Library ↗</a></p>
     </section>
 
-    <section class="workspace" id="explore" aria-labelledby="explore-title">
-      <div class="controls-panel">
-        <div>
-          <p class="section-kicker">01 · Matchmaker</p>
-          <h2 id="explore-title">What are you here to do?</h2>
-        </div>
-        <div class="goal-tabs" role="group" aria-label="Choose a study goal">
-          <button class="goal active" type="button" data-goal="focus" aria-pressed="true"><span>01</span> Deep focus</button>
-          <button class="goal" type="button" data-goal="group" aria-pressed="false"><span>02</span> Group work</button>
-          <button class="goal" type="button" data-goal="make" aria-pressed="false"><span>03</span> Make &amp; present</button>
-          <button class="goal" type="button" data-goal="comfort" aria-pressed="false"><span>04</span> Comfort break</button>
-        </div>
-        <div class="quick-filters">
-          <label>Search name, description, or amenity
-            <input id="space-search" type="search" placeholder="Try: whiteboard, carrel, media…">
-          </label>
-          <label>Library
-            <select id="library-filter"><option value="all">All libraries</option></select>
-          </label>
-          <label>Space type
-            <select id="type-filter"><option value="all">All space types</option></select>
-          </label>
-          <div class="filter-pair">
-            <label>Noise level
-              <select id="noise-filter"><option value="all">Any noise level</option><option>Silent</option><option>Whispers</option><option>Chatter</option></select>
-            </label>
-            <label>Minimum capacity
-              <select id="seats-filter"><option value="0">Any capacity</option><option value="1">1+ seats</option><option value="4">4+ seats</option><option value="6">6+ seats</option><option value="10">10+ seats</option><option value="20">20+ seats</option><option value="50">50+ seats</option></select>
-            </label>
-          </div>
-          <label class="check"><input id="accessible-filter" type="checkbox"> Accessibility listed</label>
-          <label class="check"><input id="reservable-filter" type="checkbox"> Reservability listed</label>
-          <label class="check"><input id="food-filter" type="checkbox"> Food or café listed</label>
-          <button id="clear-filters" class="text-button" type="button">Clear filters</button>
-        </div>
+    <section class="explore-shell" id="explore" aria-labelledby="explore-title">
+      <div class="section-heading explore-heading">
+        <div><p class="section-kicker">01 · Explore</p><h2 id="explore-title">Build a study-space shortlist</h2></div>
+        <p>Start with a task preset, filter the official directory, then adjust the eight scoring priorities. Every chart and ranking updates immediately.</p>
       </div>
 
-      <div class="results-panel" aria-live="polite">
-        <div class="result-heading">
-          <div>
-            <p class="section-kicker">Best published fit</p>
-            <h3 id="best-name">Loading the full directory…</h3>
-            <p id="best-meta" class="meta">103 official records</p>
+      <div class="workspace">
+        <aside class="controls-panel" aria-label="Space filters">
+          <div class="panel-head"><span>Step 1</span><h3>Choose the task</h3></div>
+          <div class="goal-tabs" role="group" aria-label="Choose a study goal">
+            <button class="goal active" type="button" data-goal="focus" aria-pressed="true"><span>01</span> Deep focus</button>
+            <button class="goal" type="button" data-goal="group" aria-pressed="false"><span>02</span> Group work</button>
+            <button class="goal" type="button" data-goal="make" aria-pressed="false"><span>03</span> Make &amp; present</button>
+            <button class="goal" type="button" data-goal="comfort" aria-pressed="false"><span>04</span> Comfort break</button>
           </div>
-          <span class="score" id="best-score">80<span>/100</span></span>
-        </div>
-        <p id="best-reason" class="best-reason">The matchmaker is ranking all official records using the selected goal and filters.</p>
-        <div id="best-features" class="feature-row"></div>
-        <p class="note">Fit scores are transparent decision aids—not student satisfaction ratings. A zero means “not listed,” not “confirmed absent.”</p>
 
-        <div class="runner-section">
-          <div class="subhead"><h4>Next best options</h4><span id="match-count">103 matches</span></div>
-          <div id="runner-ups" class="runner-grid"></div>
-        </div>
-        <div id="empty-state" class="empty-state" hidden>
-          <strong>No spaces match every filter.</strong>
-          <p>Try clearing one requirement. Missing source metadata can hide a space that may still work.</p>
-        </div>
+          <div class="panel-head filter-head"><span>Step 2</span><h3>Narrow the directory</h3></div>
+          <div class="quick-filters">
+            <label>Search
+              <input id="space-search" type="search" placeholder="Whiteboard, carrel, media…">
+            </label>
+            <label>Library
+              <select id="library-filter"><option value="all">All libraries</option></select>
+            </label>
+            <label>Space type
+              <select id="type-filter"><option value="all">All space types</option></select>
+            </label>
+            <div class="filter-pair">
+              <label>Noise
+                <select id="noise-filter"><option value="all">Any level</option><option>Silent</option><option>Whispers</option><option>Chatter</option></select>
+              </label>
+              <label>Capacity
+                <select id="seats-filter"><option value="0">Any size</option><option value="1">1+ seats</option><option value="4">4+ seats</option><option value="6">6+ seats</option><option value="10">10+ seats</option><option value="20">20+ seats</option><option value="50">50+ seats</option></select>
+              </label>
+            </div>
+            <label class="check"><input id="accessible-filter" type="checkbox"> Accessibility listed</label>
+            <label class="check"><input id="reservable-filter" type="checkbox"> Reservable</label>
+            <label class="check"><input id="food-filter" type="checkbox"> Food or café listed</label>
+            <button id="clear-filters" class="text-button" type="button">Clear all filters</button>
+          </div>
+        </aside>
+
+        <article class="results-panel" aria-live="polite">
+          <div class="best-image-wrap" id="best-image-wrap">
+            <img id="best-image" alt="" hidden>
+            <div class="image-fallback" id="image-fallback"><span>H</span><p>Official room image not available</p></div>
+          </div>
+          <div class="result-body">
+            <div class="result-heading">
+              <div>
+                <p class="section-kicker">Best published fit</p>
+                <h3 id="best-name">Loading the directory…</h3>
+                <p id="best-meta" class="meta">103 official study-space records</p>
+              </div>
+              <span class="score" id="best-score">—<span>/100</span></span>
+            </div>
+            <p id="best-reason" class="best-reason">The matchmaker is calculating the strongest fit for the selected priorities.</p>
+            <div id="best-features" class="feature-row"></div>
+            <div id="best-breakdown" class="best-breakdown" aria-label="Top space score breakdown"></div>
+            <p class="note">Fit is a transparent model of published facility data—not a student satisfaction rating. “Not listed” does not prove an amenity is absent.</p>
+
+            <div class="runner-section">
+              <div class="subhead"><h4>Next best options</h4><span id="match-count">103 matches</span></div>
+              <div id="runner-ups" class="runner-grid"></div>
+            </div>
+            <div id="empty-state" class="empty-state" hidden><strong>No spaces match every filter.</strong><p>Clear one requirement or search term. Missing source metadata can hide a space that may still work.</p></div>
+          </div>
+        </article>
+
+        <aside class="weights-panel" aria-label="Score controls">
+          <div class="panel-head"><span>Step 3</span><h3>Tune the priorities</h3></div>
+          <div class="weights-summary"><p id="weight-mode">Deep-focus preset</p><span>Slider total <strong id="weight-total">100%</strong></span></div>
+          <p class="weights-note">Scores normalize automatically to 100%. Move any slider to create a custom ranking.</p>
+          <div id="weight-controls" class="weight-controls">
+            <label><span>Quiet environment <b id="weight-quiet-value">30%</b></span><input class="weight-slider" data-signal="quiet" id="weight-quiet" type="range" min="0" max="40" step="5" value="30"></label>
+            <label><span>Privacy &amp; focus <b id="weight-privacy-value">25%</b></span><input class="weight-slider" data-signal="privacy" id="weight-privacy" type="range" min="0" max="40" step="5" value="25"></label>
+            <label><span>Collaboration <b id="weight-collaboration-value">0%</b></span><input class="weight-slider" data-signal="collaboration" id="weight-collaboration" type="range" min="0" max="40" step="5" value="0"></label>
+            <label><span>Technology <b id="weight-technology-value">5%</b></span><input class="weight-slider" data-signal="technology" id="weight-technology" type="range" min="0" max="40" step="5" value="5"></label>
+            <label><span>Reservability <b id="weight-reservation-value">10%</b></span><input class="weight-slider" data-signal="reservation" id="weight-reservation" type="range" min="0" max="40" step="5" value="10"></label>
+            <label><span>Comfort <b id="weight-comfort-value">5%</b></span><input class="weight-slider" data-signal="comfort" id="weight-comfort" type="range" min="0" max="40" step="5" value="5"></label>
+            <label><span>Accessibility <b id="weight-access-value">15%</b></span><input class="weight-slider" data-signal="access" id="weight-access" type="range" min="0" max="40" step="5" value="15"></label>
+            <label><span>Capacity <b id="weight-capacity-value">10%</b></span><input class="weight-slider" data-signal="capacity" id="weight-capacity" type="range" min="0" max="40" step="5" value="10"></label>
+          </div>
+          <button id="reset-weights" class="panel-button" type="button">Reset current preset</button>
+          <details class="score-details"><summary>How the score works</summary><p>Each priority converts published fields into a 0–100 signal. The final fit score is their normalized weighted average. See the full definitions in <a href="#methods">Methods</a>.</p></details>
+        </aside>
       </div>
     </section>
 
     <section class="snapshot section-pad" aria-labelledby="snapshot-title">
-      <div class="section-heading">
-        <div><p class="section-kicker">02 · Snapshot</p><h2 id="snapshot-title">What the selected records show</h2></div>
-        <p>Indicators recalculate with every filter. Units are spaces and percentage of spaces.</p>
+      <div class="section-heading compact">
+        <div><p class="section-kicker">Live snapshot</p><h2 id="snapshot-title">What the selected records show</h2></div>
+        <p>These indicators recalculate with every filter.</p>
       </div>
       <div class="kpi-grid">
         <article class="kpi"><span id="kpi-spaces">103</span><p>spaces in view</p></article>
         <article class="kpi"><span id="kpi-libraries">13</span><p>libraries represented</p></article>
-        <article class="kpi"><span id="kpi-seats">2,098</span><p>listed seats in view</p></article>
+        <article class="kpi"><span id="kpi-seats">2,098</span><p>listed seats</p></article>
         <article class="kpi"><span id="kpi-access">47%</span><p>accessibility listed</p></article>
       </div>
     </section>
 
+    <section class="compare section-pad" id="compare" aria-labelledby="compare-title">
+      <div class="section-heading">
+        <div><p class="section-kicker">02 · Compare</p><h2 id="compare-title">Put three spaces side by side</h2></div>
+        <p>Compare the fit score, raw facility facts, and eight underlying signals. Add spaces here or from the complete ranking table.</p>
+      </div>
+      <div class="compare-toolbar">
+        <label>Add a space
+          <select id="compare-add"><option value="">Choose from 103 spaces…</option></select>
+        </label>
+        <div id="compare-chips" class="compare-chips" aria-label="Selected comparison spaces"></div>
+      </div>
+      <p id="compare-insight" class="compare-insight"></p>
+      <div id="comparison-grid" class="comparison-grid" aria-live="polite"></div>
+    </section>
+
     <section class="evidence section-pad" id="evidence" aria-labelledby="evidence-title">
       <div class="section-heading">
-        <div><p class="section-kicker">03 · Evidence</p><h2 id="evidence-title">Coverage, trade-offs, and gaps</h2></div>
-        <p>The charts use the filtered records above. Hover or focus on plotted points for a space name and score.</p>
+        <div><p class="section-kicker">03 · Evidence</p><h2 id="evidence-title">See the system, not just the winner</h2></div>
+        <p>Rankings, coverage, trade-offs, and library capacity all use the same filtered records and current score controls.</p>
       </div>
-
       <div class="chart-grid">
         <article class="chart-card chart-wide">
-          <div class="chart-title"><div><p class="chart-number">A</p><h3>Top fit scores</h3></div><p id="rank-caption">Deep-focus weighting · score out of 100</p></div>
+          <div class="chart-title"><div><p class="chart-number">A</p><h3>Top fit scores</h3></div><p id="rank-caption">Deep-focus preset · score out of 100</p></div>
           <div id="rank-chart" class="rank-chart" role="img" aria-label="Ranked fit scores"></div>
         </article>
-
         <article class="chart-card">
-          <div class="chart-title"><div><p class="chart-number">B</p><h3>Feature coverage</h3></div><p>Share with feature listed</p></div>
+          <div class="chart-title"><div><p class="chart-number">B</p><h3>Published feature coverage</h3></div><p>Share of spaces in view</p></div>
           <div id="coverage-chart" class="coverage-chart" role="img" aria-label="Feature coverage percentages"></div>
         </article>
-
         <article class="chart-card">
-          <div class="chart-title"><div><p class="chart-number">C</p><h3>Focus vs. group fit</h3></div><p>Each dot is one space</p></div>
-          <div id="scatter-chart" class="scatter-wrap" role="img" aria-label="Scatterplot comparing focus and group fit"></div>
+          <div class="chart-title"><div><p class="chart-number">C</p><h3>Focus vs. collaboration</h3></div><p>Each dot is one space</p></div>
+          <div id="scatter-chart" class="scatter-wrap" role="img" aria-label="Scatterplot comparing quiet focus and collaboration signals"></div>
           <div class="legend"><span><i class="dot crimson"></i>Selected library</span><span><i class="dot teal"></i>Other libraries</span></div>
         </article>
-
         <article class="chart-card chart-wide">
-          <div class="chart-title"><div><p class="chart-number">D</p><h3>Library comparison</h3></div><p>Counts are “listed in the source,” not audited inventory</p></div>
-          <div class="table-scroll">
-            <table>
-              <thead><tr><th>Library</th><th>Spaces</th><th>Seats</th><th>Access</th><th>Silent / whispers</th><th>Reservable</th><th>Charging</th><th>Food / café</th></tr></thead>
-              <tbody id="library-table"></tbody>
-            </table>
-          </div>
+          <div class="chart-title"><div><p class="chart-number">D</p><h3>Library comparison</h3></div><p>Counts describe published records—not an audited inventory</p></div>
+          <div class="table-scroll"><table><thead><tr><th>Library</th><th>Spaces</th><th>Seats</th><th>Access</th><th>Silent / whispers</th><th>Reservable</th><th>Displays</th><th>Whiteboards</th></tr></thead><tbody id="library-table"></tbody></table></div>
         </article>
       </div>
     </section>
 
     <section class="findings section-pad" id="findings" aria-labelledby="findings-title">
       <div class="section-heading inverse">
-        <div><p class="section-kicker">04 · Decision brief</p><h2 id="findings-title">Three findings that matter</h2></div>
-        <p>These conclusions apply to all 103 records returned by the official Harvard Library space finder on 21 September 2026.</p>
+        <div><p class="section-kicker">04 · Decision brief</p><h2 id="findings-title">What school leaders should act on</h2></div>
+        <p>Each recommendation begins with a measured signal and ends with a practical next step.</p>
       </div>
       <div class="finding-grid">
-        <article><span>01</span><h3>Capacity is concentrated.</h3><p>Lamont and Widener account for 992 of 2,098 listed seats (47%), even though they contain only 27 of 103 space records. Large open rooms shape system capacity.</p></article>
-        <article><span>02</span><h3>Noise and task pull apart.</h3><p>Only 45 spaces are coded Silent or Whispers; 58 are coded Chatter. A single “best library” ranking would hide the difference between focused work and collaboration.</p></article>
-        <article><span>03</span><h3>Equipment is not universal.</h3><p>45 spaces are reservable, 32 list a display, and 27 list a whiteboard. Those gaps matter most for group and presentation work.</p></article>
+        <article><span>01 · CAPACITY</span><strong>992</strong><h3>Protect the high-capacity core.</h3><p>Lamont and Widener contain 47% of all 2,098 listed seats. Disruptions in these two libraries would affect system capacity disproportionately.</p></article>
+        <article><span>02 · STUDY MODE</span><strong>45 / 58</strong><h3>Make noise expectations visible.</h3><p>Only 45 records are Silent or Whispers, while 58 are Chatter. Consistent online and in-building noise labels would reduce mismatch.</p></article>
+        <article><span>03 · COLLABORATION</span><strong>32 / 27</strong><h3>Audit rooms before buying equipment.</h3><p>Only 32 spaces list displays and 27 list whiteboards. First verify which reservable rooms truly lack them, then target upgrades.</p></article>
       </div>
-
       <div class="recommendations">
-        <div><p class="section-kicker">Recommended next moves</p><h2>Make the information more decision-ready.</h2></div>
+        <div><p class="section-kicker">Recommended implementation plan</p><h2>Move from directory to service evidence.</h2></div>
         <ol>
-          <li><strong>Protect quiet capacity while improving wayfinding.</strong><span>Label Silent and Whispers zones consistently at the entrance and online; monitor whether the 45 lower-noise records match student expectations.</span></li>
-          <li><strong>Target collaboration upgrades.</strong><span>Prioritize rooms that are already reservable but lack a listed display or whiteboard, then verify the physical inventory before purchasing.</span></li>
-          <li><strong>Add anonymous demand evidence.</strong><span>Collect periodic occupied-seat counts by broad time block and a short feature-priority survey—without names, contact details, or device tracking.</span></li>
+          <li><strong>Standardize and verify.</strong><span>Require the same fields for every record—capacity, noise, access, power, reservation, and equipment—and label unknown values explicitly.</span><b>Measure: 95% field completion</b></li>
+          <li><strong>Pilot anonymous demand counts.</strong><span>Count occupied seats in Lamont and Widener during broad morning, afternoon, evening, and late-night blocks for four representative weeks.</span><b>Measure: utilization by time block</b></li>
+          <li><strong>Validate student priorities.</strong><span>Run a short anonymous survey that asks students to rank features and rate broad space types, without names, contact details, or device tracking.</span><b>Measure: ≥200 responses across schools</b></li>
         </ol>
       </div>
     </section>
 
-    <section class="data-table-section section-pad" aria-labelledby="records-title">
-      <div class="section-heading">
-        <div><p class="section-kicker">05 · Records</p><h2 id="records-title">Inspect the evidence</h2></div>
-        <a class="button secondary" href="harvard-study-spaces.csv" download>Download CSV</a>
+    <section class="data-table-section section-pad" id="rankings" aria-labelledby="records-title">
+      <div class="section-heading records-heading">
+        <div><p class="section-kicker">05 · Complete ranking</p><h2 id="records-title">Inspect every official record</h2></div>
+        <div class="records-actions">
+          <label>Sort
+            <select id="records-sort"><option value="fit">Fit score: high to low</option><option value="seats">Capacity: high to low</option><option value="name">Space name: A–Z</option><option value="library">Library: A–Z</option></select>
+          </label>
+          <a class="button secondary" href="harvard-study-spaces.csv" download>Download CSV ↘</a>
+        </div>
       </div>
       <div class="table-scroll records-wrap">
         <table>
-          <thead><tr><th>Space</th><th>Library</th><th>Type</th><th>Seats</th><th>Noise</th><th>Accessible</th><th>Reservable</th><th>Charging</th><th>Amenities</th></tr></thead>
+          <thead><tr><th>Compare</th><th>Space</th><th>Fit</th><th>Library</th><th>Type</th><th>Seats</th><th>Noise</th><th>Access</th><th>Reserve</th><th>Amenities</th></tr></thead>
           <tbody id="records-table"></tbody>
         </table>
       </div>
       <p class="table-note" id="records-note">Showing all 103 official records.</p>
     </section>
 
-    <section class="materials section-pad" id="materials" aria-labelledby="materials-title">
+    <section class="methods-section section-pad" id="methods" aria-labelledby="methods-title">
       <div class="section-heading">
-        <div><p class="section-kicker">06 · Submission pack</p><h2 id="materials-title">Everything behind the dashboard</h2></div>
-        <p>Open each item as a separate page or download the analysis-ready dataset.</p>
+        <div><p class="section-kicker">06 · Data &amp; methods</p><h2 id="methods-title">A documented, reproducible snapshot</h2></div>
+        <p>Collected 21 September 2026 from Harvard Library’s public APIs. No names, contact details, personal locations, medical information, or behavioral histories were collected.</p>
       </div>
-      <div class="material-grid">
-        <a href="harvard-study-spaces.csv" download><span>CSV</span><h3>Collected dataset</h3><p>103 rows, 43 variables, including 19 amenity indicators.</p><b>Download ↘</b></a>
-        <a href="methods.html"><span>01</span><h3>Data &amp; methodology</h3><p>Source, sample, units, scoring, definitions, and limitations.</p><b>Read note →</b></a>
-        <a href="presentation.html"><span>05:00</span><h3>Presentation</h3><p>Six-slide walkthrough with a timed speaker script.</p><b>Present →</b></a>
-        <a href="reflection.html"><span>02</span><h3>Reflection</h3><p>What the evidence supports—and what it cannot prove.</p><b>Read reflection →</b></a>
+      <div class="method-grid">
+        <article><span>QUESTION</span><h3>What space best fits the work?</h3><p>The unit is one named room or study area. The users are students choosing a setting and library teams prioritizing facility information and services.</p></article>
+        <article><span>COVERAGE</span><h3>103 records, not a hand-picked sample</h3><p>The project downloaded every room returned by the public space-finder API, then joined 13 represented libraries and expanded 19 amenities into binary fields.</p></article>
+        <article><span>SCORING</span><h3>Eight signals, visibly weighted</h3><p>Published fields become 0–100 signals for quiet, privacy, collaboration, technology, reservation, comfort, access, and capacity. The fit score is their normalized weighted average.</p></article>
+        <article><span>CODING RULE</span><h3>“Not listed” is not “absent”</h3><p>A binary 1 means an amenity is explicitly listed. A 0 means it was not listed in that record. This protects the analysis from claiming more than the source supports.</p></article>
+      </div>
+
+      <div class="methods-lower">
+        <article class="definition-card">
+          <h3>Key units and definitions</h3>
+          <div class="table-scroll"><table><thead><tr><th>Field</th><th>Unit</th><th>Definition</th></tr></thead><tbody>
+            <tr><th>Seats</th><td>count</td><td>Published designed capacity; one record has no value.</td></tr>
+            <tr><th>Noise</th><td>category</td><td>Official codes: 0 Silent, 1 Whispers, 2 Chatter.</td></tr>
+            <tr><th>Coordinates</th><td>decimal degrees</td><td>Published latitude and longitude for the room or parent library.</td></tr>
+            <tr><th>Amenities</th><td>0 / 1</td><td>Nineteen published indicators including accessibility, charging, display, food, private desks, tech, and whiteboards.</td></tr>
+            <tr><th>Fit score</th><td>0–100 model points</td><td>Normalized weighted average of eight signals; not a satisfaction rating.</td></tr>
+          </tbody></table></div>
+          <a href="methods.html">Read the complete one-page methodology →</a>
+        </article>
+        <article class="limitations-card">
+          <h3>Limitations and uncertainty</h3>
+          <ul>
+            <li><strong>Directory boundary:</strong> classrooms, residences, cafés, outdoor areas, and any spaces missing from the API are outside scope.</li>
+            <li><strong>Documentation bias:</strong> richer records can score better even when another room has the same unlisted amenity.</li>
+            <li><strong>No demand data:</strong> capacity is not occupancy; the project cannot identify crowding or wait times.</li>
+            <li><strong>No satisfaction data:</strong> the score models fit and cannot prove student preference or wellbeing.</li>
+            <li><strong>Access varies:</strong> hours, eligibility, booking rules, and equipment change; users must check the live source.</li>
+            <li><strong>Weights are judgments:</strong> presets are transparent analytic choices, not Harvard policy.</li>
+          </ul>
+        </article>
+      </div>
+
+      <div class="sources-block">
+        <div class="sources-head"><p class="section-kicker">Source data</p><h3>Official links, dates, and roles</h3></div>
+        <div class="source-list">
+          <a href="https://library.harvard.edu/spaces" target="_blank" rel="noreferrer"><span>Primary interface · accessed 21 Sep 2026</span><strong>Harvard Library · Find a Space ↗</strong></a>
+          <a href="https://library.harvard.edu/api/v1/rooms?_format=json" target="_blank" rel="noreferrer"><span>103 room records · accessed 21 Sep 2026</span><strong>Official rooms API ↗</strong></a>
+          <a href="https://library.harvard.edu/api/v1/library/rooms?_format=json" target="_blank" rel="noreferrer"><span>Library names, addresses, hours, coordinates</span><strong>Official library metadata API ↗</strong></a>
+          <a href="https://library.harvard.edu/api/v1/taxonomy/amenities?_format=json" target="_blank" rel="noreferrer"><span>19 published amenity definitions</span><strong>Official amenities taxonomy ↗</strong></a>
+          <a href="https://library.harvard.edu/api/v1/taxonomy/room_types?_format=json" target="_blank" rel="noreferrer"><span>Six published room types</span><strong>Official room-type taxonomy ↗</strong></a>
+          <a href="https://library.harvard.edu/accessibility" target="_blank" rel="noreferrer"><span>Interpretive context</span><strong>Accessibility at Harvard Library ↗</strong></a>
+        </div>
       </div>
     </section>
 
-    <section class="sources section-pad" aria-labelledby="sources-title">
-      <div class="section-heading"><div><p class="section-kicker">Sources</p><h2 id="sources-title">Official information, checked 21 Sep 2026</h2></div></div>
-      <div class="source-list">
-        <a href="https://library.harvard.edu/spaces" target="_blank" rel="noreferrer"><span>Primary directory</span> Harvard Library · Find a Space ↗</a>
-        <a href="https://library.harvard.edu/api/v1/rooms?_format=json" target="_blank" rel="noreferrer"><span>Room records</span> Official rooms API snapshot ↗</a>
-        <a href="https://library.harvard.edu/api/v1/library/rooms?_format=json" target="_blank" rel="noreferrer"><span>Library metadata</span> Official library API snapshot ↗</a>
-        <a href="https://library.harvard.edu/api/v1/taxonomy/amenities?_format=json" target="_blank" rel="noreferrer"><span>Definitions</span> Official amenities taxonomy ↗</a>
-        <a href="https://library.harvard.edu/api/v1/taxonomy/room_types?_format=json" target="_blank" rel="noreferrer"><span>Definitions</span> Official room-type taxonomy ↗</a>
-        <a href="https://library.harvard.edu/accessibility" target="_blank" rel="noreferrer"><span>Definition context</span> Accessibility at Harvard Library ↗</a>
+    <section class="materials section-pad" id="materials" aria-labelledby="materials-title">
+      <div class="section-heading"><div><p class="section-kicker">07 · Submission pack</p><h2 id="materials-title">Every required deliverable</h2></div><p>The project files remain connected to the analysis shown above.</p></div>
+      <div class="material-grid">
+        <a href="harvard-study-spaces.csv" download><span>CSV</span><h3>Collected dataset</h3><p>103 rows and 45 analysis-ready variables.</p><b>Download ↘</b></a>
+        <a href="harvard-study-spaces.json" download><span>JSON</span><h3>Machine-readable data</h3><p>All records plus dataset-level metadata.</p><b>Download ↘</b></a>
+        <a href="methods.html"><span>01</span><h3>Methodology note</h3><p>Collection, units, scoring, and limitations.</p><b>Read →</b></a>
+        <a href="presentation.html"><span>05:00</span><h3>Presentation</h3><p>Six-slide walkthrough with a timed script.</p><b>Present →</b></a>
+        <a href="reflection.html"><span>02</span><h3>Reflection</h3><p>What the evidence supports and cannot prove.</p><b>Read →</b></a>
       </div>
     </section>
   </main>
 
-  <footer><p>Student Data-to-Site Challenge · Problem Set 01</p><p>Facility information changes. Confirm current hours, eligibility, and room status with Harvard Library before visiting.</p></footer>
+  <footer>
+    <p><strong>Student Data-to-Site Challenge · Problem Set 01</strong><br>School facilities and student experience</p>
+    <p>Facility information changes. Confirm current hours, eligibility, equipment, and room status with Harvard Library before visiting.</p>
+  </footer>
   <script src="data.js" defer></script>
   <script src="app.js" defer></script>
 </body>
